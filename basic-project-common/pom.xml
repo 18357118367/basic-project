@@ -12,12 +12,6 @@
     <artifactId>basic-project-common</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>cn.hotol</groupId>
-            <artifactId>basic-project-domain</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
         <!-- gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
