@@ -11,5 +11,12 @@
 
     <artifactId>basic-project-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.hotol</groupId>
+            <artifactId>basic-project-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
