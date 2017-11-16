@@ -12,6 +12,7 @@
     <artifactId>basic-project-common</artifactId>
 
     <dependencies>
+
         <!-- gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>

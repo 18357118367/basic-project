@@ -1,4 +1,4 @@
-package cn.hotol.bp.domain;
+package cn.hotol.base.common.util;
 
 
 public enum ResultCodes {

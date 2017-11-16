@@ -1,8 +1,6 @@
 package cn.hotol.base.common.util;
 
-
 import cn.hotol.base.common.HotolException;
-import cn.hotol.bp.domain.ResultCodes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;

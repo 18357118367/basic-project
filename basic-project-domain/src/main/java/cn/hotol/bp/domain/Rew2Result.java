@@ -1,5 +1,7 @@
 package cn.hotol.bp.domain;
 
+import cn.hotol.base.common.util.ResultCodes;
+
 import java.io.Serializable;
 
 public class Rew2Result<T> implements Serializable {

@@ -1,7 +1,7 @@
 package cn.hotol.base.common;
 
 
-import cn.hotol.bp.domain.ResultCodes;
+import cn.hotol.base.common.util.ResultCodes;
 
 public class HotolException extends RuntimeException{
     private ResultCodes rspCode;
