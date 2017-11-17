@@ -1,19 +1,18 @@
 package cn.hotol.base.common.util;
 
 
+import com.alibaba.fastjson.util.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Map;
 
@@ -66,7 +65,52 @@ public class HttpClientUtils {
         }finally {
             httpclient.getConnectionManager().shutdown();
         }
+    }
 
+    public static void downLoadFile(String url ,Map<String,String> params, String localFileName) {
+        HttpClient httpClient = new DefaultHttpClient();
+        OutputStream out = null;
+        InputStream in = null;
+
+        try {
+            HttpGet httpGet = new HttpGet(url);
+
+            for (String key : params.keySet()){
+                String obj = params.get(key);
+                httpGet.addHeader(key , obj);
+            }
+
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            HttpEntity entity = httpResponse.getEntity();
+            in = entity.getContent();
+
+            long length = entity.getContentLength();
+            if (length <= 0) {
+                throw new FileNotFoundException(String.format("请求下载文件不存在！[%s]",params));
+            }
+
+            File file = new File(localFileName);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            out = new FileOutputStream(file);
+            byte[] buffer = new byte[4096];
+            int readLength = 0;
+            while ((readLength=in.read(buffer)) > 0) {
+                byte[] bytes = new byte[readLength];
+                System.arraycopy(buffer, 0, bytes, 0, readLength);
+                out.write(bytes);
+            }
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            IOUtils.close(in);
+            IOUtils.close(out);
+        }
     }
 
 }
