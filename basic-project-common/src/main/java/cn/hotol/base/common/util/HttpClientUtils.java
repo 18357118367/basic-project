@@ -2,11 +2,13 @@ package cn.hotol.base.common.util;
 
 
 import com.alibaba.fastjson.util.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -21,6 +23,10 @@ import java.util.Map;
  */
 public class HttpClientUtils {
 
+    public static String httpClientPost(String url ,Map<String ,Object> params ,String encoding) throws IOException{
+        return httpClientPost(url ,params ,encoding ,"");
+    }
+
     /**
      * http请求工具类，支持文件形式的参数
      *
@@ -29,19 +35,30 @@ public class HttpClientUtils {
      * @param encoding
      * @return
      */
-    public static String HttpClientPost(String url ,Map<String ,Object> params ,String encoding) throws IOException {
+    public static String httpClientPost(String url ,Map<String ,Object> params ,String encoding ,String contentType) throws IOException {
         StringBuilder sb = new StringBuilder();
         HttpClient httpclient = new DefaultHttpClient();
         try{
             HttpPost post = new HttpPost(url);
 
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            ContentType ct = null;
+            if (StringUtils.isNoneBlank(contentType)) {
+                ct = ContentType.create(contentType, encoding);
+                builder.setContentType(ct);
+            }
+
             for (String key : params.keySet()){
                 Object obj = params.get(key);
                 if (obj instanceof File)
                     builder.addBinaryBody(key , (File) obj);
                 else{
-                    StringBody body = new StringBody(obj.toString() , Charset.forName(encoding));
+                    StringBody body = null;
+                    if (ct != null){
+                        body = new StringBody(obj.toString() , ct);
+                    }else{
+                        body = new StringBody(obj.toString() , Charset.forName(encoding));
+                    }
                     builder.addPart(key ,body);
                 }
             }
