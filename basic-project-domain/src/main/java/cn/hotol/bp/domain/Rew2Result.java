@@ -4,6 +4,12 @@ import cn.hotol.base.common.util.ResultCodes;
 
 import java.io.Serializable;
 
+/**
+ * 请使用 cn.hotol.bp.domain.BasicResult
+ *
+ * @param <T>
+ */
+@Deprecated()
 public class Rew2Result<T> implements Serializable {
 
     /**
@@ -35,7 +41,6 @@ public class Rew2Result<T> implements Serializable {
     public Rew2Result(T data) {
         this.data = data;
     }
-    
 
 
     public int getCode() {
