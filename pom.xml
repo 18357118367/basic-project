@@ -15,6 +15,7 @@
         <module>basic-project-redis</module>
         <module>basic-project-datasource</module>
         <module>basic-project-swagger</module>
+        <module>basic-project-mq</module>
     </modules>
 
     <parent>
