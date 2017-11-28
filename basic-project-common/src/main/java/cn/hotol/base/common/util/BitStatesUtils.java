@@ -5,36 +5,36 @@ package cn.hotol.base.common.util;
  */
 public class BitStatesUtils {
 
+    /**
+     * 同盾反欺诈
+     */
+    public static final long TONGDUN_ANTI_FRAUD = 1L;
 
     /**
-     * 认证同盾
+     * 绑定银行卡
      */
-    public static final long OP_BIND_TONGDUN = 1L;
+    public static final long BIND_BANK_CARD = 1L << 1;
 
     /**
-     * 认证人脸识别
+     * 身份信息
      */
-    public static final long OP_BIND_FACE = 1L << 1;
+    public static final long IDENTITY_INFORMATION = 1L << 2;
 
     /**
-     * 认证运营商
+     * 基本信息
      */
-    public static final long OP_BASIC_OPERATOR = 1L << 2;
+    public static final long BASIC_INFORMATION = 1L << 3;
 
     /**
-     * 实名认证
+     * 手机验证
      */
-    public static final long OP_REAL_AUTH = 1L << 3;
-
-    /**
-     * 有一个借款在审核流程当中
-     */
-    public static final long HAS_BIDREQUEST_IN_PROCESS = 1L << 4;
+    public static final long MOBILE_VERIFICATION = 1L << 4;
 
     /**
      * 芝麻平台是否授权
      */
     public static final long ZHIMA_AUTHORISE = 1L << 5;
+
 
     /**
      * @param states 所有状态值
