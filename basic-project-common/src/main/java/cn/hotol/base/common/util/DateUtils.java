@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -32,4 +33,43 @@ public class DateUtils {
         }
         return date;
     }
+
+    /**
+     * 获取两个时间之间的秒数
+     */
+    public static long getSecondsBetween(Date d1, Date d2) {
+        return Math.abs((d1.getTime() - d2.getTime()) / 1000);
+    }
+
+    /**
+     * 获取当天最后一秒
+     *
+     * @param current
+     * @return
+     */
+    public static Date getEndDate(Date current) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(current);
+        c.set(Calendar.HOUR_OF_DAY, 23);
+        c.set(Calendar.MINUTE, 59);
+        c.set(Calendar.SECOND, 59);
+        return c.getTime();
+    }
+
+
+    /**
+     * 获取当天第一秒
+     *
+     * @param current
+     * @return
+     */
+    public static Date getFirstDate(Date current) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(current);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        return c.getTime();
+    }
+
 }

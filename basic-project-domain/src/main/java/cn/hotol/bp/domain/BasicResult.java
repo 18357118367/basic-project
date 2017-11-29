@@ -5,6 +5,18 @@ import java.io.Serializable;
 public class BasicResult<T> implements Serializable {
 
     private static final long serialVersionUID = 308206823825564261L;
+
+    /**
+     * 总页数
+     */
+    private int totalPage;
+
+    /**
+     * 是否成功
+     */
+
+    private boolean success;
+
     /**
      * 错误代码 0:成功  其他为异常
      */
@@ -25,9 +37,48 @@ public class BasicResult<T> implements Serializable {
      */
     private String key;
 
+    public BasicResult(boolean success, int code, String message, T data) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
 
     public BasicResult() {
 
+    }
+
+    public BasicResult(boolean success, int code, String message, T data, int a) {
+        this.success = success;
+        this.code = code;
+        this.data = data;
+        this.message = message;
+        totalPage = a;
+    }
+
+    public BasicResult(boolean success, T data) {
+        this.success = success;
+        this.data = data;
+    }
+
+    public BasicResult(boolean success, int code, String message) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+    }
+
+    public BasicResult(boolean success, int code, String message, String key) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.key = key;
+    }
+
+    public BasicResult(boolean success, T data, String key) {
+        this.success = success;
+        this.data = data;
+        this.key = key;
     }
 
     public BasicResult(int code, String message) {
@@ -35,7 +86,7 @@ public class BasicResult<T> implements Serializable {
         this.message = message;
     }
 
-    public BasicResult(int code, String message , T data) {
+    public BasicResult(int code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -50,11 +101,11 @@ public class BasicResult<T> implements Serializable {
     public BasicResult(T data) {
         this.data = data;
     }
+
     public BasicResult(T data, String key) {
         this.data = data;
         this.key = key;
     }
-
 
 
     public int getCode() {
@@ -87,5 +138,21 @@ public class BasicResult<T> implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }
