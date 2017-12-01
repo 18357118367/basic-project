@@ -72,4 +72,14 @@ public class DateUtils {
         return c.getTime();
     }
 
+    /**
+     * @return int 天数
+     * @description 两个日期相差的天数，第一个比第二个日期小返回正数，反之负数
+     * @params [date1, date2]
+     * @date 2017/11/29 10:35
+     */
+    public static int differentDaysByMillisecond(Date date1, Date date2) {
+        return (int) ((date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+    }
+
 }
