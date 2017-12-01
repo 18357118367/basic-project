@@ -78,7 +78,7 @@ public class DateUtils {
      * @params [date1, date2]
      * @date 2017/11/29 10:35
      */
-    private int differentDaysByMillisecond(Date date1, Date date2) {
+    public static int differentDaysByMillisecond(Date date1, Date date2) {
         return (int) ((date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
     }
 
