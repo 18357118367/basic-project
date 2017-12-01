@@ -33,6 +33,17 @@ public class BasicResult<T> implements Serializable {
     private T data;
 
     /**
+     * 配置信息
+     */
+    private String config;
+
+    /**
+     * 基本信息
+     *
+     */
+    private String info;
+
+    /**
      * 系统请求唯一序列号
      */
     private String key;
@@ -154,5 +165,21 @@ public class BasicResult<T> implements Serializable {
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public String getConfig() {
+        return config;
+    }
+
+    public void setConfig(String config) {
+        this.config = config;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

@@ -40,7 +40,6 @@ public class HttpClientUtils {
         HttpClient httpclient = new DefaultHttpClient();
         try{
             HttpPost post = new HttpPost(url);
-
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             ContentType ct = null;
             if (StringUtils.isNoneBlank(contentType)) {
@@ -50,6 +49,8 @@ public class HttpClientUtils {
 
             for (String key : params.keySet()){
                 Object obj = params.get(key);
+                if (obj == null)
+                    continue;
                 if (obj instanceof File)
                     builder.addBinaryBody(key , (File) obj);
                 else{
