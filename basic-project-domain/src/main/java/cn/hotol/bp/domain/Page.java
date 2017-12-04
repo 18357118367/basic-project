@@ -1,9 +1,13 @@
 package cn.hotol.bp.domain;
 
+import java.io.Serializable;
+
 /**
  * 分页对应的实体类
  */
-public class Page {
+public class Page implements Serializable {
+
+    private static final long serialVersionUID = 7635779345431284514L;
 
     private int totalNumber;//总条数
 
