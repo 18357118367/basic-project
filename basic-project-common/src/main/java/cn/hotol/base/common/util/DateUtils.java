@@ -82,4 +82,20 @@ public class DateUtils {
         return (int) ((date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
     }
 
+    /**
+     * @return void
+     * @description 针对前端只传一个时间的特殊处理。
+     * @params [startTime, endTime]
+     * @date 2017/12/7 20:05
+     */
+    public static void formatParmsDate(Date startTime, Date endTime) {
+        if (startTime == null && endTime != null) {
+            startTime = getFirstDate(endTime);
+            endTime = getEndDate(endTime);
+        }
+        if (endTime == null && startTime != null) {
+            startTime = getFirstDate(startTime);
+            endTime = getEndDate(startTime);
+        }
+    }
 }
