@@ -20,7 +20,6 @@ public class RedisClient {
     @Autowired
     private JsonUtil jsonUtil;
 
-
     public ValueOperations<String, String> opsObject;
 
     @PostConstruct
