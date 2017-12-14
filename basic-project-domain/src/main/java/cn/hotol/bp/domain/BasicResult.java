@@ -110,10 +110,12 @@ public class BasicResult<T> implements Serializable {
     }
 
     public BasicResult(T data) {
+        setSuccess(true);
         this.data = data;
     }
 
     public BasicResult(T data, String key) {
+        setSuccess(true);
         this.data = data;
         this.key = key;
     }
