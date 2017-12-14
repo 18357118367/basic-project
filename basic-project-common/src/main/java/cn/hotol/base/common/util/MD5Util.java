@@ -60,7 +60,7 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String password = generate("admin");
+        String password = generate("MZ918");
         System.out.println("password = " + password);
         System.out.println(verify("admin", password));
     }
