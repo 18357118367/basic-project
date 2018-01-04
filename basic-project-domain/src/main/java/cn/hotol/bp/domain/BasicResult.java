@@ -32,21 +32,6 @@ public class BasicResult<T> implements Serializable {
      */
     private T data;
 
-    /**
-     * 配置信息
-     */
-    private String config;
-
-    /**
-     * 基本信息
-     *
-     */
-    private String info;
-
-    /**
-     * 系统请求唯一序列号
-     */
-    private String key;
 
     public BasicResult(boolean success, int code, String message, T data) {
         this.success = success;
@@ -60,12 +45,12 @@ public class BasicResult<T> implements Serializable {
 
     }
 
-    public BasicResult(boolean success, int code, String message, T data, int a) {
+    public BasicResult(boolean success, int code, String message, T data, int totalPage) {
         this.success = success;
         this.code = code;
         this.data = data;
         this.message = message;
-        totalPage = a;
+        this.totalPage = totalPage;
     }
 
     public BasicResult(boolean success, T data) {
@@ -79,19 +64,6 @@ public class BasicResult<T> implements Serializable {
         this.message = message;
     }
 
-    public BasicResult(boolean success, int code, String message, String key) {
-        this.success = success;
-        this.code = code;
-        this.message = message;
-        this.key = key;
-    }
-
-    public BasicResult(boolean success, T data, String key) {
-        this.success = success;
-        this.data = data;
-        this.key = key;
-    }
-
     public BasicResult(int code, String message) {
         this.code = code;
         this.message = message;
@@ -103,21 +75,9 @@ public class BasicResult<T> implements Serializable {
         this.data = data;
     }
 
-    public BasicResult(int code, String message, String key) {
-        this.code = code;
-        this.message = message;
-        this.key = key;
-    }
-
     public BasicResult(T data) {
         setSuccess(true);
         this.data = data;
-    }
-
-    public BasicResult(T data, String key) {
-        setSuccess(true);
-        this.data = data;
-        this.key = key;
     }
 
 
@@ -145,14 +105,6 @@ public class BasicResult<T> implements Serializable {
         this.data = data;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
     public int getTotalPage() {
         return totalPage;
     }
@@ -169,19 +121,4 @@ public class BasicResult<T> implements Serializable {
         this.success = success;
     }
 
-    public String getConfig() {
-        return config;
-    }
-
-    public void setConfig(String config) {
-        this.config = config;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
 }
