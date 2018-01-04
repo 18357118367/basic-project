@@ -39,7 +39,6 @@ public class BasicResult<T> implements Serializable {
 
     /**
      * 基本信息
-     *
      */
     private String info;
 
@@ -183,5 +182,74 @@ public class BasicResult<T> implements Serializable {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public static class Builder<T> {
+        private int totalPage;
+        private boolean success;
+        private int code;
+        private String message = "成功";
+        private T data;
+        private String config;
+        private String info;
+
+        public Builder(boolean success, int code) {
+            this.success = success;
+            this.code = code;
+        }
+
+        public Builder totalPage(int totalPage) {
+            this.totalPage = totalPage;
+            return this;
+        }
+
+        public Builder message(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public Builder data(T data) {
+            this.data = data;
+            return this;
+        }
+
+        public Builder config(String config) {
+            this.config = config;
+            return this;
+        }
+
+        public Builder info(String info) {
+            this.info = info;
+            return this;
+        }
+
+        public BasicResult<T> build() {
+            return new BasicResult<>(this);
+        }
+
+    }
+
+    private BasicResult(Builder<T> builder) {
+        this.totalPage = builder.totalPage;
+        this.success = builder.success;
+        this.code = builder.code;
+        this.message = builder.message;
+        this.data = builder.data;
+        this.config = builder.config;
+        this.info = builder.info;
+    }
+
+    @Override
+    public String toString() {
+        return "BasicResult{" +
+                "totalPage=" + totalPage +
+                ", success=" + success +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                ", config='" + config + '\'' +
+                ", info='" + info + '\'' +
+                ", key='" + key + '\'' +
+                '}';
     }
 }
