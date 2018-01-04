@@ -198,27 +198,27 @@ public class BasicResult<T> implements Serializable {
             this.code = code;
         }
 
-        public Builder totalPage(int totalPage) {
+        public Builder<T> totalPage(int totalPage) {
             this.totalPage = totalPage;
             return this;
         }
 
-        public Builder message(String message) {
+        public Builder<T> message(String message) {
             this.message = message;
             return this;
         }
 
-        public Builder data(T data) {
+        public Builder<T> data(T data) {
             this.data = data;
             return this;
         }
 
-        public Builder config(String config) {
+        public Builder<T> config(String config) {
             this.config = config;
             return this;
         }
 
-        public Builder info(String info) {
+        public Builder<T> info(String info) {
             this.info = info;
             return this;
         }
