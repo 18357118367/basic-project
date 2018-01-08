@@ -11,7 +11,7 @@
 
     <artifactId>basic-project-mq</artifactId>
     <properties>
-        <rocketmq.version>4.1.0-incubating-SNAPSHOT</rocketmq.version>
+        <rocketmq.version>4.1.0-incubating</rocketmq.version>
     </properties>
 
     <dependencies>
