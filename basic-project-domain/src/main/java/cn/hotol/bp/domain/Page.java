@@ -15,7 +15,7 @@ public class Page implements Serializable {
 
     private int totalPage;//总页数
 
-    private int pageNumber = 4;//每页显示条数
+    private int pageNumber = 10;//每页显示条数
 
     private int dbIndex;//数据库中limit的参数，从第几条开始取
 
@@ -26,6 +26,7 @@ public class Page implements Serializable {
      */
     private void count() {
         // 计算总页数
+        if (this.pageNumber < 1) this.pageNumber = 10;
         int totalPageTemp = this.totalNumber / this.pageNumber;
         int plus = (this.totalNumber % this.pageNumber) == 0 ? 0 : 1;
         totalPageTemp = totalPageTemp + plus;
