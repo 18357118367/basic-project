@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * @author ZhangZH 2017/12/7 20:08
  */
-public class DecimaUtil {
+public class DecimalUtil {
 
     /**
      * @return java.math.BigDecimal

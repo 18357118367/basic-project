@@ -21,6 +21,13 @@ public class Page implements Serializable {
 
     private int dbNumber;//数据库中limit的参数，一共取多少条
 
+    public Page(){}
+
+    public Page(int pageNumber,int currentPage){
+        this.pageNumber = pageNumber;
+        this.currentPage = currentPage;
+    }
+
     /**
      * 根据当前对象中属性值计算并设置相关属性值
      */
