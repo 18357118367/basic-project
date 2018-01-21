@@ -22,6 +22,16 @@ public class DecimalUtil {
      * @return java.math.BigDecimal
      * @description 格式化BigDecimal
      * @params [bigDecimal]
+     * @date 2018年1月21日14:51:02
+     */
+    public static BigDecimal formatDecimal(BigDecimal bigDecimal,int scale) {
+        return bigDecimal == null ? new BigDecimal(0) : bigDecimal.setScale(scale, RoundingMode.DOWN);
+    }
+
+    /**
+     * @return java.math.BigDecimal
+     * @description 格式化BigDecimal
+     * @params [bigDecimal]
      * @date 2017/12/7 20:06
      */
     public static BigDecimal formatTwoDecimal(BigDecimal bigDecimal) {
