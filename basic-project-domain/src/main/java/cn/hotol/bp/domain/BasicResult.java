@@ -32,6 +32,11 @@ public class BasicResult<T> implements Serializable {
      */
     private T data;
 
+    /**
+     * 配置
+     */
+    private String config;
+
     public BasicResult(boolean success, int code, String message, T data) {
         this.success = success;
         this.code = code;
@@ -119,4 +124,11 @@ public class BasicResult<T> implements Serializable {
         this.success = success;
     }
 
+    public String getConfig() {
+        return config;
+    }
+
+    public void setConfig(String config) {
+        this.config = config;
+    }
 }
