@@ -68,7 +68,9 @@ public class BasicResult<T> implements Serializable {
     }
 
     public BasicResult(int code, String message) {
-        setSuccess(Boolean.FALSE);
+        if (code != BasicResultCodes.SUCCESS.getCode()) {
+            setSuccess(Boolean.FALSE);
+        }
         this.code = code;
         this.message = message;
     }
