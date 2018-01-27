@@ -68,17 +68,11 @@ public class BasicResult<T> implements Serializable {
     }
 
     public BasicResult(int code, String message) {
-        if (code != BasicResultCodes.SUCCESS.getCode()) {
-            setSuccess(Boolean.FALSE);
+        if (code == BasicResultCodes.SUCCESS.getCode()) {
+            setSuccess(Boolean.TRUE);
         }
         this.code = code;
         this.message = message;
-    }
-
-    public BasicResult(int code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
     }
 
     public BasicResult(T data) {
