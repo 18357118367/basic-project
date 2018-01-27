@@ -75,6 +75,11 @@ public class BasicResult<T> implements Serializable {
         this.message = message;
     }
 
+    public BasicResult(int code, String message, T data) {
+        this(code, message);
+        this.data = data;
+    }
+
     public BasicResult(T data) {
         setSuccess(Boolean.TRUE);
         this.data = data;
