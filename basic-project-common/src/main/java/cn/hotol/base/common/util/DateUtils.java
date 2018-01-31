@@ -134,4 +134,25 @@ public class DateUtils {
         Date date=new Date();
         return sdf.format(date);
     }
+
+    /**
+     * 时间比较
+     *
+     * @param date1
+     * @param date2
+     * @return date2>=date1 true ;date2<date1 false
+     */
+    public static Boolean compareWithDay(Date date1,Date date2){
+        if (date1 == null || date2 == null){
+            return false;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat(SIMPLE_FORMAT);
+        String one = dateFormat.format(date1);
+        String two = dateFormat.format(date2);
+        if (one.compareTo(two) <= 0){
+            return true;
+        }
+        return false;
+    }
+
 }
