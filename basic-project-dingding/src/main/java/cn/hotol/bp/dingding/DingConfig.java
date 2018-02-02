@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 public class DingConfig {
 
     @Bean(initMethod = "init",destroyMethod = "destroy")
-    @ConfigurationProperties(prefix = "ding.messager")
+    @ConfigurationProperties(prefix = "ding.default")
     @Scope("singleton")
     public MyDing getMyDing(){
         return new MyDing();
