@@ -16,10 +16,20 @@ public class MyDing {
 
     //发送钉钉消息
     public String sendTextMessage(String message){
-        TextMessage textMessage = new TextMessage(message);
-        SendResult result = null;
         try {
-            result = client.send(hook,textMessage);
+            TextMessage textMessage = new TextMessage(message);
+            SendResult result = client.send(hook,textMessage);
+            return result.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("【钉钉消息发送】错误原因："+e.getMessage());
+        }
+        return null;
+    }
+
+    public String sendMessage(Message message){
+        try {
+            SendResult result = client.send(hook,message);
             return result.toString();
         } catch (IOException e) {
             e.printStackTrace();

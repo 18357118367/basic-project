@@ -19,8 +19,9 @@
             <version>0.9.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>cn.hotol</groupId>
+            <artifactId>basic-project-common</artifactId>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 </project>
