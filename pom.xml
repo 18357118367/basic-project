@@ -17,6 +17,7 @@
         <module>basic-project-swagger</module>
         <module>basic-project-mq</module>
         <module>basic-project-job</module>
+        <module>basic-project-dingding</module>
     </modules>
 
     <parent>
