@@ -49,4 +49,14 @@ public class DecimalUtil {
         return interestRate.multiply(new BigDecimal(dayNumber)).divide(new BigDecimal(360).setScale(10,
                 BigDecimal.ROUND_FLOOR),BigDecimal.ROUND_FLOOR).multiply(amount);
     }
+
+    //计算利息
+    public static BigDecimal interestCalculate(int dayNumber, BigDecimal interestRate, BigDecimal amount){
+        BigDecimal zero = new BigDecimal(0);
+        if(interestRate.compareTo(zero)<=0 || amount.compareTo(zero)<=0){
+            return new BigDecimal(0);
+        }
+        return interestRate.multiply(new BigDecimal(dayNumber)).divide(new BigDecimal(360).setScale(10,
+                BigDecimal.ROUND_FLOOR),BigDecimal.ROUND_FLOOR).multiply(amount);
+    }
 }
