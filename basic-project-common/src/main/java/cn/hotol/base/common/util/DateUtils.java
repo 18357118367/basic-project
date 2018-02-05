@@ -79,7 +79,8 @@ public class DateUtils {
      * @date 2017/11/29 10:35
      */
     public static int differentDaysByMillisecond(Date date1, Date date2) {
-        return (int) ((date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+        int time = (int) (date2.getTime() - date1.getTime());
+        return (time % (1000 * 3600 * 24)) == 0 ? time / (1000 * 3600 * 24) : time / (1000 * 3600 * 24) + 1;
     }
 
     /**
