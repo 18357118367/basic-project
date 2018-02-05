@@ -79,7 +79,18 @@ public class DateUtils {
      * @date 2017/11/29 10:35
      */
     public static int differentDaysByMillisecond(Date date1, Date date2) {
-        return (int) ((date2.getTime() - date1.getTime()) / (1000 * 3600 * 24));
+        Calendar c1 = Calendar.getInstance();
+        c1.setTime(date1);
+        c1.set(Calendar.HOUR_OF_DAY, 0);
+        c1.set(Calendar.MINUTE, 0);
+        c1.set(Calendar.SECOND, 0);
+
+        Calendar c2 = Calendar.getInstance();
+        c2.setTime(date2);
+        c2.set(Calendar.HOUR_OF_DAY, 0);
+        c2.set(Calendar.MINUTE, 0);
+        c2.set(Calendar.SECOND, 1);
+        return (int) ((c2.getTime().getTime() - c1.getTime().getTime()) / (1000 * 3600 * 24));
     }
 
     /**
