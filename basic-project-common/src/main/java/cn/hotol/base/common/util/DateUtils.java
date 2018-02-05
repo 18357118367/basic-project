@@ -60,7 +60,7 @@ public class DateUtils {
     /**
      * 获取当天第一秒
      *
-     * @param current
+     * @param current s
      * @return
      */
     public static Date getFirstDate(Date current) {
