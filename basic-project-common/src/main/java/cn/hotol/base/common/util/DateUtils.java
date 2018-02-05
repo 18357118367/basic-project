@@ -89,7 +89,7 @@ public class DateUtils {
         c2.setTime(date2);
         c2.set(Calendar.HOUR_OF_DAY, 0);
         c2.set(Calendar.MINUTE, 0);
-        c2.set(Calendar.SECOND, 1);
+        c2.set(Calendar.SECOND, 0);
         return (int) ((c2.getTime().getTime() - c1.getTime().getTime()) / (1000 * 3600 * 24));
     }
 
