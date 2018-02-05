@@ -84,12 +84,14 @@ public class DateUtils {
         c1.set(Calendar.HOUR_OF_DAY, 0);
         c1.set(Calendar.MINUTE, 0);
         c1.set(Calendar.SECOND, 0);
+        c1.set(Calendar.MILLISECOND, 0);
 
         Calendar c2 = Calendar.getInstance();
         c2.setTime(date2);
         c2.set(Calendar.HOUR_OF_DAY, 0);
         c2.set(Calendar.MINUTE, 0);
         c2.set(Calendar.SECOND, 0);
+        c2.set(Calendar.MILLISECOND, 0);
         return (int) ((c2.getTime().getTime() - c1.getTime().getTime()) / (1000 * 3600 * 24));
     }
 
