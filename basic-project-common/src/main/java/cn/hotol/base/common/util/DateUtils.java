@@ -4,6 +4,10 @@ import org.apache.commons.lang.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -93,7 +97,23 @@ public class DateUtils {
         c2.set(Calendar.MINUTE, 0);
         c2.set(Calendar.SECOND, 0);
         c2.set(Calendar.MILLISECOND, 0);
-        return (int) ((c2.getTime().getTime() - c1.getTime().getTime()) / (1000 * 3600 * 24));
+        return (int) ((c2.getTimeInMillis() - c1.getTimeInMillis()) / (1000 * 3600 * 24));
+    }
+
+    /**
+     * @return int 天数
+     * @description 两个日期相差的天数，第一个比第二个日期小返回正数，反之负数
+     * @params [date1, date2]
+     * @date 2017/11/29 10:35
+     */
+    public static int differentDays(Date date1, Date date2) {
+        Instant instant1 = date1.toInstant();
+        Instant instant2 = date2.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime1 = LocalDateTime.ofInstant(instant1,zoneId);
+        LocalDateTime localDateTime2 = LocalDateTime.ofInstant(instant2,zoneId);
+        long interval = localDateTime1.until(localDateTime2, ChronoUnit.DAYS);
+        return (int) interval;
     }
 
     /**
