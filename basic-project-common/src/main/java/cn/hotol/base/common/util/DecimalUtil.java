@@ -36,25 +36,22 @@ public class DecimalUtil {
      * @date 2017/12/7 20:06
      */
     public static BigDecimal formatTwoDecimal(BigDecimal bigDecimal) {
-        return bigDecimal == null ? new BigDecimal(0) : bigDecimal.setScale(2, RoundingMode.DOWN);
+        return bigDecimal == null ? BigDecimal.ZERO : bigDecimal.setScale(2, RoundingMode.DOWN);
     }
 
     //计算利息
     public static BigDecimal interestCalculate(Date loanDayStart, Date loanDayEnd, BigDecimal interestRate, BigDecimal amount){
-        BigDecimal zero = new BigDecimal(0);
-        if(interestRate.compareTo(zero)<=0 || amount.compareTo(zero)<=0){
-            return new BigDecimal(0);
+        if(interestRate.compareTo(BigDecimal.ZERO)<=0 || amount.compareTo(BigDecimal.ZERO)<=0){
+            return BigDecimal.ZERO;
         }
         int dayNumber = DateUtils.differentDaysByMillisecond(loanDayStart,loanDayEnd);
-        return interestRate.multiply(new BigDecimal(dayNumber)).divide(new BigDecimal(360).setScale(10,
-                BigDecimal.ROUND_FLOOR),BigDecimal.ROUND_FLOOR).multiply(amount);
+        return interestCalculate(dayNumber,interestRate,amount);
     }
 
     //计算利息
     public static BigDecimal interestCalculate(int dayNumber, BigDecimal interestRate, BigDecimal amount){
-        BigDecimal zero = new BigDecimal(0);
-        if(interestRate.compareTo(zero)<=0 || amount.compareTo(zero)<=0){
-            return new BigDecimal(0);
+        if(interestRate.compareTo(BigDecimal.ZERO)<=0 || amount.compareTo(BigDecimal.ZERO)<=0){
+            return BigDecimal.ZERO;
         }
         return interestRate.multiply(new BigDecimal(dayNumber)).divide(new BigDecimal(360).setScale(10,
                 BigDecimal.ROUND_FLOOR),BigDecimal.ROUND_FLOOR).multiply(amount);
