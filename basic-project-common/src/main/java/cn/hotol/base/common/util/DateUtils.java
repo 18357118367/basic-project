@@ -1,6 +1,8 @@
 package cn.hotol.base.common.util;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +16,7 @@ public class DateUtils {
 
     public final static String FORMAT = "yyyy-MM-dd HH:mm:ss";
     public final static String SIMPLE_FORMAT = "yyyy-MM-dd";
-
+    private final static Logger logger = LoggerFactory.getLogger(DateUtils.class);
     /**
      * 字符串转时间格式
      *
@@ -93,6 +95,7 @@ public class DateUtils {
         c2.set(Calendar.MINUTE, 0);
         c2.set(Calendar.SECOND, 0);
         c2.set(Calendar.MILLISECOND, 0);
+        logger.debug("DateUtils.differentDaysByMillisecond[c1:{},c2:{}]",c1.getTimeInMillis(),c2.getTimeInMillis());
         return (int) ((c2.getTimeInMillis() - c1.getTimeInMillis()) / (1000 * 3600 * 24));
     }
 
