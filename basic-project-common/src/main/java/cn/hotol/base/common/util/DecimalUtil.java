@@ -15,7 +15,7 @@ public class DecimalUtil {
 
     /**
      * @return java.math.BigDecimal
-     * @description 格式化BigDecimal
+     * @description 格式化BigDecimal 小数点保留李4位
      * @params [bigDecimal]
      * @date 2017/12/7 20:06
      */
@@ -25,7 +25,7 @@ public class DecimalUtil {
 
     /**
      * @return java.math.BigDecimal
-     * @description 格式化BigDecimal
+     * @description 格式化BigDecimal 自由设置小数点位数
      * @params [bigDecimal]
      * @date 2018年1月21日14:51:02
      */
@@ -35,7 +35,7 @@ public class DecimalUtil {
 
     /**
      * @return java.math.BigDecimal
-     * @description 格式化BigDecimal
+     * @description 格式化BigDecimal 小数点保留两位
      * @params [bigDecimal]
      * @date 2017/12/7 20:06
      */
@@ -49,7 +49,6 @@ public class DecimalUtil {
             return BigDecimal.ZERO;
         }
         int dayNumber = DateUtils.differentDaysByMillisecond(loanDayStart, loanDayEnd);
-        logger.debug("DecimalUtil.interestCalculate[dayNumber:{}]", dayNumber);
         return interestCalculate(dayNumber, interestRate, amount);
     }
 
@@ -58,10 +57,8 @@ public class DecimalUtil {
         if (interestRate.compareTo(BigDecimal.ZERO) <= 0 || amount.compareTo(BigDecimal.ZERO) <= 0) {
             return BigDecimal.ZERO;
         }
-        BigDecimal a = interestRate.multiply(new BigDecimal(dayNumber)).setScale(10, BigDecimal.ROUND_DOWN).
+        return interestRate.multiply(new BigDecimal(dayNumber).setScale(10,BigDecimal.ROUND_DOWN)).setScale(10, BigDecimal.ROUND_DOWN).
                 divide(new BigDecimal(360).setScale(10, BigDecimal.ROUND_DOWN)
                         , BigDecimal.ROUND_DOWN).multiply(amount.setScale(10,BigDecimal.ROUND_DOWN));
-        logger.debug("DecimalUtil.interestCalculate[a:{}]", a);
-        return a;
     }
 }
