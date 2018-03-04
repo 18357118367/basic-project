@@ -58,7 +58,7 @@ public class DecimalUtil {
             return BigDecimal.ZERO;
         }
         return interestRate.multiply(new BigDecimal(dayNumber).setScale(10,BigDecimal.ROUND_DOWN)).setScale(10, BigDecimal.ROUND_DOWN).
-                divide(new BigDecimal(360).setScale(10, BigDecimal.ROUND_DOWN)
+                divide(new BigDecimal(360).setScale(10, BigDecimal.ROUND_DOWN),10
                         , BigDecimal.ROUND_DOWN).multiply(amount.setScale(10,BigDecimal.ROUND_DOWN));
     }
 }
