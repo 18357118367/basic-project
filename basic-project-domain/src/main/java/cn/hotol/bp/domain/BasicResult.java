@@ -1,5 +1,7 @@
 package cn.hotol.bp.domain;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.Serializable;
 
 public class BasicResult<T> implements Serializable {
@@ -131,5 +133,10 @@ public class BasicResult<T> implements Serializable {
 
     public void setConfig(String config) {
         this.config = config;
+    }
+
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
     }
 }
